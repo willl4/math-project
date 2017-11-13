@@ -26,13 +26,24 @@ fval = []
 deltx = 0.001
 while x <= rbound:
     tot=0
-    currentpow=power
     for i in range(0,len(data['coefficients'])):
         tot+=float(data['coefficients'][i])*(x**currentpow)
         currentpow=currentpow-1
     fval.append(tot)
     x+=0.001
-    
+"""
+range1 = int((rbound-lbound)/0.001)
+
+x = float(lbound)
+fval = []
+deltx = 0.001
+while x <= rbound:
+    tot=0
+    for i in range(0,range1):
+        tot+=float(eval(function))
+    fval.append(tot)
+    x+=0.001"""
+
 onederiv = []
 valonederiv = 0.0
 for i in range(0,len(fval)-1):
@@ -110,81 +121,3 @@ print("absolute min: " + str(abmin))
 print("concave up: " + str(concaveup))
 print("concave down: " + str(concavedown))
 print("inflection points: " + str(inflectionpt))
-    
-    
-    
-    
-"""for i in range of list just made
-    find i+1 value minus i value and divide by change in x"""
-
-"""x=int(input("Enter x value"))
-tot=0
-currentpow=power
-for i in range(0,len(data['coefficients'])):
-    tot+=int(data['coefficients'][i])*(x**currentpow)
-    currentpow=currentpow-1
-print(tot)
-
-list1 = data['coefficients'].split()
-for i in range(0,len(data['coefficients'])):
-    derivativecoeff = int(data['coefficients'][i])*power
-    derivative = str(derivativecoeff)+'x^'+str(power-1)+'+'
-    if derivativecoeff != 0:
-        if power > 1:
-            data['derivative'] = data['derivative']+str(derivative)
-        if power == 1:
-            data['derivative'] = data['derivative']+str(derivativecoeff)
-    power+=-1
-    
-print(data['derivative'])"""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"""
-function = int(input('Choose highest power in function: '))
-if function == 1:
-    coefficient1 = int(input('Enter the coeffecient for the x^1 term: '))
-    coefficient = int(input('Enter the constant: '))
-elif function == 2:
-    coefficient2 = int(input('Enter the coeffecient for the x^2 term: '))
-    coefficient1 = int(input('Enter the coeffecient for the x^1 term: '))
-    coefficient = int(input('Enter the constant: '))
-elif function == 3:
-    coefficient3 = int(input('Enter the coeffecient for the x^3 term: '))
-    coefficient2 = int(input('Enter the coeffecient for the x^2 term: '))
-    coefficient1 = int(input('Enter the coeffecient for the x^1 term: '))
-    coefficient = int(input('Enter the constant: '))
-elif function == 4:
-    coefficient4 = int(input('Enter the coeffecient for the x^4 term: '))
-    coefficient3 = int(input('Enter the coeffecient for the x^3 term: '))
-    coefficient2 = int(input('Enter the coeffecient for the x^2 term: '))
-    coefficient1 = int(input('Enter the coeffecient for the x^1 term: '))
-    coefficient = int(input('Enter the constant: '))
-elif function == 5:
-    coefficient5 = int(input('Enter the coeffecient for the x^5 term: '))
-    coefficient4 = int(input('Enter the coeffecient for the x^4 term: '))
-    coefficient3 = int(input('Enter the coeffecient for the x^3 term: '))
-    coefficient2 = int(input('Enter the coeffecient for the x^2 term: '))
-    coefficient1 = int(input('Enter the coeffecient for the x^1 term: '))
-    coefficient = int(input('Enter the constant: '))
-"""
-    
