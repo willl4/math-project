@@ -13,28 +13,47 @@ if __name__ == '__main__':
 
 
 function = int(input('Choose highest power in function: '))
+lbound = int(input('Enter left bound: '))
+rbound = int(input('Enter right bound: '))
 power = function
 while function >= 0:
     coefficient = int(input('Enter the coefficient for the x^'+str(function)+' term: '))
     data['coefficients'] = data['coefficients']+str(coefficient)
     function = function-1
 
-"""intialize x=0 term as left bound
-while loop for x values within bounds
-    find current f(x) value 
-    store into list
-    add small increment to x
-for i in range of list just made
+x=float(lbound)
+fval = []
+deltx = 0.001
+while x <= rbound:
+    tot=0
+    currentpow=power
+    for i in range(0,len(data['coefficients'])):
+        tot+=float(int(data['coefficients'][i])*(x**currentpow))
+        currentpow=currentpow-1
+    fval.append(tot)
+    x+=0.001
+onederiv = []
+valonederiv = 0.0
+for i in range(0,len(fval)-1):
+    valonederiv = (fval[i+1]-fval[i])/deltx
+    onederiv.append(valonederiv)
+twoderiv = []
+valtwoderiv = 0.0
+for i in range(0,len(onederiv)-1):
+    valtwoderiv = (onederiv[i+1]-onederiv[i])/deltx
+    twoderiv.append(valtwoderiv)
+print(twoderiv)
+"""for i in range of list just made
     find i+1 value minus i value and divide by change in x"""
 
-x=int(input("Enter x value"))
+"""x=int(input("Enter x value"))
 tot=0
 currentpow=power
 for i in range(0,len(data['coefficients'])):
     tot+=int(data['coefficients'][i])*(x**currentpow)
     currentpow=currentpow-1
 print(tot)
-"""
+
 list1 = data['coefficients'].split()
 for i in range(0,len(data['coefficients'])):
     derivativecoeff = int(data['coefficients'][i])*power
@@ -46,12 +65,7 @@ for i in range(0,len(data['coefficients'])):
             data['derivative'] = data['derivative']+str(derivativecoeff)
     power+=-1
     
-print(data['derivative'])
-
-
-
-
-"""
+print(data['derivative'])"""
 
 
 
