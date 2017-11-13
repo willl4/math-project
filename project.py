@@ -49,21 +49,42 @@ increase = []
 decrease = []
 ispos = onederiv[0]>0
 rangestart=0
+max = []
+min = []
+if ispos:
+    min.append([lbound,fval[0]])
+else:
+    max.append([lbound,fval[0]])
 for i in range(0,len(onederiv)-1):
     if onederiv[i] * onederiv[i+1] < 0:
         if ispos:
             increase.append([(rangestart*deltx)+lbound,(i*deltx)+lbound])
+            max.append([(i*deltx)+lbound,fval[i]])
         else:
             decrease.append([(rangestart*deltx)+lbound,(i*deltx)+lbound])
+            min.append([(i*deltx)+lbound,fval[i]])
         ispos = not ispos
         rangestart=i+1
 if ispos:
     increase.append([(rangestart*deltx)+lbound,rbound])
+    max.append([rbound,fval[len(fval)-1]])
 else:
     decrease.append([(rangestart*deltx)+lbound,rbound])
-
-print(increase)
-print(decrease)
+    min.append([rbound,fval[len(fval)-1]])
+abmax=max[0]
+abmin=min[0]
+for i in range(1,len(max)):
+    if max[i][1] > abmax[1]:
+        abmax=max[i]
+for i in range(1,len(min)):
+    if min[i][1] < abmin[1]:
+        abmin=min[i]
+print("increase: " + str(increase))
+print("decrease: " + str(decrease))
+print("local max: " + str(max))
+print("local min: " + str(min))
+print("absolute max: " + str(abmax))
+print("absolute min: " + str(abmin))
     
     
     
