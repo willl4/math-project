@@ -11,38 +11,38 @@ if __name__ == '__main__':
     data = {}
     data['coefficients'] = ''
     data['derivative'] = ''
+print('If there is a sinx function input it as sin(x)')
+print('If there is a cosx function input it as cos(x)')
+print('If there is a tanx function input it as tan(x)')
+print('If there is a cotx function input it as cot(x)')
+print('If there is a secx function input it as sec(x)')
+print('If there is a cscx function input it as csc(x)')
+print('If there is a log(x)/log(base) function input it as log(x[,base]')
+print('If there is an lnx function input it as log(x)')
+print('If there is a e^x function input it as exp(x)')
+print('If there is a a^x function input it as pow(a,x)')
+print('If there is an inverse sin(x) function input it as asin(x)')
+print('If there is an inverse cos(x) function input it as acos(x)')
+print('If there is an inverse tan(x) function input it as atan(x)')
+print('If there is an inverse cot(x) function input it as acot(x)')
+print('If there is an inverse sec(x) function input it as asec(x)')
+print('If there is an inverse csc(x) function input it as acsc(x)')
+print('Input x^ as x**')
+print('Use the * to show multiplication. Ex: 3x^2 is 3*x**2')
 
-function = int(input('Choose highest power in function: '))
+function = input('Enter the function: ')
 lbound = int(input('Enter left bound: '))
 rbound = int(input('Enter right bound: '))
-power = function
-while function >= 0:
-    coefficient = int(input('Enter the coefficient for the x^'+str(function)+' term: '))
-    data['coefficients'] = data['coefficients']+str(coefficient)
-    function = function-1
 
-x=float(lbound)
-fval = []
-deltx = 0.001
-while x <= rbound:
-    tot=0
-    for i in range(0,len(data['coefficients'])):
-        tot+=float(data['coefficients'][i])*(x**currentpow)
-        currentpow=currentpow-1
-    fval.append(tot)
-    x+=0.001
-"""
 range1 = int((rbound-lbound)/0.001)
-
 x = float(lbound)
 fval = []
 deltx = 0.001
-while x <= rbound:
-    tot=0
-    for i in range(0,range1):
-        tot+=float(eval(function))
+tot=0
+for i in range(0,range1):
+    tot=float(eval(function))
     fval.append(tot)
-    x+=0.001"""
+    x+=0.001
 
 onederiv = []
 valonederiv = 0.0
