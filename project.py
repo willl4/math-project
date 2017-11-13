@@ -79,13 +79,37 @@ for i in range(1,len(max)):
 for i in range(1,len(min)):
     if min[i][1] < abmin[1]:
         abmin=min[i]
+        
+concaveup = []
+concavedown= []
+ispos = twoderiv[0]>0
+rangestart=0
+inflectionpt = []
+for i in range(0,len(twoderiv)-1):
+    if twoderiv[i] * twoderiv[i+1] < 0:
+        if ispos:
+            concaveup.append([(rangestart*deltx)+lbound,(i*deltx)+lbound])
+            inflectionpt.append([(i*deltx)+lbound,fval[i]])
+        else:
+            concavedown.append([(rangestart*deltx)+lbound,(i*deltx)+lbound])
+            inflectionpt.append([(i*deltx)+lbound,fval[i]])
+        ispos = not ispos
+        rangestart=i+1
+if ispos:
+    concaveup.append([(rangestart*deltx)+lbound,rbound])
+else:
+    concavedown.append([(rangestart*deltx)+lbound,rbound])
+
+
 print("increase: " + str(increase))
 print("decrease: " + str(decrease))
 print("local max: " + str(max))
 print("local min: " + str(min))
 print("absolute max: " + str(abmax))
 print("absolute min: " + str(abmin))
-    
+print("concave up: " + str(concaveup))
+print("concave down: " + str(concavedown))
+print("inflection points: " + str(inflectionpt))
     
     
     
