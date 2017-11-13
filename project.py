@@ -5,12 +5,12 @@ for temp in func:
     print(temp)
     
 """
+import math
 
 if __name__ == '__main__':
     data = {}
     data['coefficients'] = ''
     data['derivative'] = ''
-
 
 function = int(input('Choose highest power in function: '))
 lbound = int(input('Enter left bound: '))
@@ -28,21 +28,47 @@ while x <= rbound:
     tot=0
     currentpow=power
     for i in range(0,len(data['coefficients'])):
-        tot+=float(int(data['coefficients'][i])*(x**currentpow))
+        tot+=float(data['coefficients'][i])*(x**currentpow)
         currentpow=currentpow-1
     fval.append(tot)
     x+=0.001
+    
 onederiv = []
 valonederiv = 0.0
 for i in range(0,len(fval)-1):
     valonederiv = (fval[i+1]-fval[i])/deltx
     onederiv.append(valonederiv)
+
 twoderiv = []
 valtwoderiv = 0.0
 for i in range(0,len(onederiv)-1):
     valtwoderiv = (onederiv[i+1]-onederiv[i])/deltx
     twoderiv.append(valtwoderiv)
-print(twoderiv)
+
+increase = []
+decrease = []
+ispos = onederiv[0]>0
+rangestart=0
+for i in range(0,len(onederiv)-1):
+    if onederiv[i] * onederiv[i+1] < 0:
+        if ispos:
+            increase.append([(rangestart*deltx)+lbound,(i*deltx)+lbound])
+        else:
+            decrease.append([(rangestart*deltx)+lbound,(i*deltx)+lbound])
+        ispos = not ispos
+        rangestart=i+1
+if ispos:
+    increase.append([(rangestart*deltx)+lbound,rbound])
+else:
+    decrease.append([(rangestart*deltx)+lbound,rbound])
+
+print(increase)
+print(decrease)
+    
+    
+    
+    
+    
 """for i in range of list just made
     find i+1 value minus i value and divide by change in x"""
 
